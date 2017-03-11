@@ -29,16 +29,15 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader','css-loader' ],
+                use: ['style-loader','css-loader','postcss-loader'],
 
             },
             {
-                test: /\.(jpg|png|gif|svg|eot|ttf|woff|woff2)$/,
-                use:[
-                    {
-                        loader:'file-loader',options:{name: 'static/media/[name].[hash:8].[ext]'}
-                    }
-                ]
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: 'url-loader',
+                options: {
+                limit: 10000
+                }
             },
             {
                 test: /\.(sass|scss)$/,
